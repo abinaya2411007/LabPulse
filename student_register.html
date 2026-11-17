@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration - LabPulse</title>
+
+    <style>
+        body {
+            background: #f3f6fb;
+            font-family: Arial;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 35px;
+            width: 350px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px #dce3ee;
+        }
+
+        h2 {
+            color: #2563eb;
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            box-sizing: border-box;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .message {
+            color: #dc2626;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>⚡ LabPulse</h2>
+    <h3>Student Registration</h3>
+
+    {% with messages = get_flashed_messages() %}
+        {% for message in messages %}
+            <p class="message">{{ message }}</p>
+        {% endfor %}
+    {% endwith %}
+
+    <form method="POST">
+
+        <input type="text"
+               name="name"
+               placeholder="Student Name"
+               required>
+
+        <input type="text"
+               name="roll_no"
+               placeholder="Roll Number"
+               required>
+
+        <input type="email"
+               name="email"
+               placeholder="Email Address"
+               required>
+
+        <input type="password"
+               name="password"
+               placeholder="Create Password"
+               minlength="8"
+               required>
+
+        <button type="submit">
+            Register
+        </button>
+
+    </form>
+
+    <p>Already registered?
+        <a href="{{ url_for('student_login') }}">
+            Login Here
+        </a>
+    </p>
+
+</div>
+
+</body>
+</html>
